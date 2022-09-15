@@ -73,7 +73,7 @@ a:hover::before, .gold-runes-underline::before {
   z-index: -1;
   opacity: .025;
   background-repeat: no-repeat;
-  background-position: 100% 200%;
+  background-position: -100px -60px;
   overflow: hidden;
   background-size: 125%;
   transform: rotate(180deg) scaleX(-1);
@@ -220,9 +220,8 @@ nav .menu-item.logo img {
 }
 
 .about-card {
-  width: calc(30% + 20px);
+  width: calc(510px + 20px);
   margin-right: -20px;
-  min-width: 200px;
   z-index: 1;
 }
 
@@ -232,7 +231,7 @@ nav .menu-item.logo img {
 }
 
 .gallery-card {
-  width: 70%;
+  width: calc(100% - 510px);
   min-width: 400px;
   margin-top: 20px;
   z-index: 0;
