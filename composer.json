@@ -1,0 +1,12 @@
+{
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Luna\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.6",
+        "php": ">=7.3"
+    }
+}
