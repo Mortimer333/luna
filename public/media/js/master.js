@@ -1,39 +1,48 @@
 class Luna {
-  static galleryCardViewImage;
-  static gallerCardTrack;
-
-  static cardGalleryChange(e, imagePath) {
-    if (!Luna.galleryCardViewImage) {
-      Luna.retrieveGalleryCardImage();
-    }
-
-    if (!Luna.gallerCardTrack) {
-      Luna.retrieveGalleryTrack();
-    }
-    Luna.galleryCardViewImage.src = imagePath;
-    const active = Luna.gallerCardTrack.querySelector('.gallery-card-track-item.active');
-    active.classList.remove('active');
-    if (e.target.nodeName === 'IMG') {
-      e.target.parentElement.classList.add('active');
-      return;
-    }
-    e.target.classList.add('active');
+  static elargableClass = 'enlarge-enabled';
+  static enlargeActive = 'enlarge-acitve';
+  static imgEnlargeModal;
+  static imgEnlargeModalImg;
+  static imgEnlargeModalId = 'enlarge-container';
+  static init() {
+    Luna.setupEnlarableImages();
   }
 
-  static retrieveGalleryCardImage() {
-    Luna.galleryCardViewImage = document.getElementById('gallery-card-view-image');
-    if (!Luna.galleryCardViewImage) {
-      throw new Error("Couldn't retrieve gallery card view image");
+  static setupEnlarableImages() {
+    document.querySelectorAll('img.' + Luna.elargableClass).forEach(image => {
+      image.addEventListener('click', function (e) {
+        Luna.enlargeImg(e.target.src);
+      });
+    });
+
+    Luna.imgEnlargeModal = document.getElementById(Luna.imgEnlargeModalId);
+    if (!Luna.imgEnlargeModal) {
+      throw new Error("Image enlarging doesn't work because enlarge modal was not found");
     }
+
+    Luna.imgEnlargeModalImg = Luna.imgEnlargeModal.querySelector('img');
+    if (!Luna.imgEnlargeModal) {
+      throw new Error("Image enlarging doesn't work because enlarge modal doesn't have img node");
+    }
+
+    Luna.imgEnlargeModalImg.addEventListener('focusout', function (e) {
+      Luna.imgEnlargeModal.classList.remove('active');
+    });
+    Luna.imgEnlargeModalImg.setAttribute('tabindex', '-1');
+    document.addEventListener('keyup', function (e) {
+      if (e.keyCode === 27) {
+        Luna.imgEnlargeModal.classList.remove('active');
+      }
+    })
   }
 
-  static retrieveGalleryTrack() {
-    Luna.gallerCardTrack = document.getElementById('galler-card-track');
-    if (!Luna.gallerCardTrack) {
-      throw new Error("Couldn't retrieve gallery track");
-    }
+  static enlargeImg(src) {
+    Luna.imgEnlargeModal.classList.add('active');
+    Luna.imgEnlargeModalImg.focus();
+    Luna.imgEnlargeModalImg.src = src;
   }
 }
+Luna.init();
 
 /**
  * Lazy loading library from https://github.com/Mortimer333/LazyLoading
@@ -49,7 +58,11 @@ class LazyLoading extends HTMLImageElement {
       this.observer   = false   ;
       this._lazy_src  = this.src;                       // saving correct url
       this.src        = ''      ;                       // removing src before parser will start downloading
-      this._old_style = this.getAttribute('style');     // saving old styles
+      // saving attributes
+      this._attributes = this.getAttributeNames().reduce((acc, name) => {
+        return {...acc, [name]: this.getAttribute(name)};
+      }, {});
+      delete this._attributes.src;
 
       // observer settings
       this.options = {
@@ -91,7 +104,11 @@ class LazyLoading extends HTMLImageElement {
   }
 
   onImageLoaded () {
-    this.setAttribute( 'style', this._old_style );
+    this.removeAttribute('style'); // my try to represent ratio 1:2
+    Object.keys(this._attributes).forEach(atributeName => {
+      this.setAttribute( atributeName, this._attributes[atributeName] );
+    });
+
   }
 
   attachObserver () {
