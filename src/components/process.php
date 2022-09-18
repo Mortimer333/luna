@@ -4,7 +4,7 @@
 <section class="hours grey-bg full-page content">
   <div class="container">
     <div class="process-graph gold-runes-color">
-      <img src="<?= Tool::getFile('media/assets/dog.png') ?>" alt="step 1" is="lazy-img">
+      <img src="<?= Tool::getFile('media/assets/blob_uncut_dog.png') ?>" alt="step 1" is="lazy-img">
       &#8594;
       <img src="<?= Tool::getFile('media/assets/logo.png') ?>" alt="step 2" is="lazy-img">
       &#8594;

@@ -29,14 +29,14 @@
 
     <style media="screen">
       .floral {
-        background-image: url('<?= URL . ASSET_PREFIX ?>/media/assets/floral.svg');
+        background-image: url('<?= URL ?>/media/assets/floral.svg');
       }
     </style>
     <link rel="stylesheet" href="<?= Tool::getFile('/media/css/master.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   </head>
   <body>
-    <nav>
+    <nav id="menu">
       <div class="container menu">
         <!--
           - about
@@ -64,6 +64,7 @@
     <main>
       <?php require_once Tool::getComponent('hero') ?>
       <?php require_once Tool::getComponent('process') ?>
+      <?php require_once Tool::getComponent('contact') ?>
     </main>
     <footer>
       <div class="container">

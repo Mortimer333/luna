@@ -7,6 +7,27 @@ namespace Luna;
  */
 abstract class Tool
 {
+    private const FIELDS = [
+        "text" => '
+            <div class="input-container {{class}}">
+              <p class="label">{{label}}</p>
+              <input type="text" name="{{name}}" value="" placeholder="{{label}}">
+            </div>
+        ',
+        "date" => '
+            <div class="input-container {{class}}">
+              <p class="label">{{label}}</p>
+              <input type="date" name="{{name}}" value="{{now}}" placeholder="{{label}}">
+            </div>
+        ',
+        "number" => '
+            <div class="input-container {{class}}">
+              <p class="label">{{label}}</p>
+              <input type="number" name="{{name}}" value="" min="{{min}}" max="{{max}}" placeholder="{{label}}">
+            </div>
+        ',
+    ];
+
     /**
      * Returns file path with cache burst (modification date)
      * @param  string $filePath
@@ -32,5 +53,54 @@ abstract class Tool
     public static function getComponent(string $path): string
     {
         return self::getRoot() . '/src/components/' . rtrim($path, '.php') . '.php';
+    }
+
+    public static function generateFormFields(array $formSchemat): string
+    {
+        $form = '';
+        foreach ($formSchemat as $key => $value) {
+            $form .= self::getField($key, $value);
+        }
+        return $form;
+    }
+
+    public static function getField(int|string $key, array $field): string
+    {
+        $fieldStr = '';
+        if (is_string($key)) {
+            $fieldStr .= "<div class='$key'>";
+        }
+
+        foreach ($field as $name => $value) {
+            if (is_array($value)) {
+                $fieldStr .= self::getField($name, $value);
+                unset($field[$name]);
+            }
+        }
+
+        if (empty($field)) {
+            if (is_string($key)) {
+                $fieldStr .= "</div>";
+            }
+            return $fieldStr;
+        }
+
+        $fieldStr .= self::generateField($field);
+        if (is_string($key)) {
+            $fieldStr .= "</div>";
+        }
+        return $fieldStr;
+    }
+
+    public static function generateField(array $field): string
+    {
+        $template = self::FIELDS[$field['type']] ?? throw new \Exception('Field type not found', 500);
+        if ($field['type'] == 'date') {
+            $field['now'] = date('Y-m-d');
+        }
+        foreach ($field as $key => $value) {
+            $template = str_replace('{{' . $key . '}}', $value, $template);
+        }
+        return $template;
     }
 }

@@ -19,6 +19,7 @@ body {
   --animation-speed: .3s;
   --menu-height: 65px;
   --grey-fill: #F9F9F9;
+  --graphit: #535353;
 }
 
 a, .gold-runes-underline, .gold-runes-strike {
@@ -96,7 +97,8 @@ img.enlarge-enabled {
 }
 
 .full-page {
-  height: calc(100vh - var(--menu-height, 65px));
+  min-height: calc(100vh - var(--menu-height, 65px));
+  padding: 30px 0;
 }
 
 .grey-bg {
@@ -138,6 +140,37 @@ img.enlarge-enabled {
   text-align: center;
 }
 
+.title-grey {
+  color: var(--grey-wind-fadeout, grey);
+  text-align: center;
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-grey::before, .title-grey::after {
+  content: '';
+  display: inline-block;
+  background-color: var(--grey-wind-fadeout, grey);
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  opacity: .5;
+}
+
+.title-grey::before {
+  margin-right: 10px;
+}
+
+.title-grey::after {
+  margin-left: 10px;
+}
+
+.separator {
+    height: 50px;
+}
+
 .content {
   display: flex;
   align-items: center;
@@ -146,7 +179,7 @@ img.enlarge-enabled {
 .story-text {
   font-size: 18px;
   line-height: 1.6;
-  color: #535353;
+  color: var(--graphit, #535353);
   margin-bottom: 30px;
 }
 
@@ -194,8 +227,8 @@ img.enlarge-enabled {
 
 .frame {
   position: absolute;
-  width: calc(100% - 15px);
-  height: calc(100% - 15px);
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
   z-index: -1;
   left: 5px;
   top: 5px;
@@ -248,6 +281,12 @@ nav .menu-item.logo img {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
+  transition: top var(--animation-speed, .5s), height var(--animation-speed, .5s);
+}
+
+nav .menu-item.logo.small img {
+  height: 100%;
+  top: 0;
 }
 
 .hero {
@@ -298,6 +337,12 @@ nav .menu-item.logo img {
   margin-right: -20px;
 }
 
+.revers .about-card {
+  margin-top: 20px;
+  margin-right: 0;
+  z-index: 0;
+}
+
 .about-card-bio {
   overflow: hidden;
   height: calc(100% - 185px);
@@ -310,12 +355,27 @@ nav .menu-item.logo img {
   z-index: 0;
 }
 
-.gallery-card:hover {
+.revers .gallery-card {
+  margin-top: 0;
+  margin-right: -20px;
+}
+
+*:not(.revers) .gallery-card:hover {
+  margin-top: 0;
+  z-index: 1;
+}
+
+.revers .about-card:hover {
   margin-top: 0;
   z-index: 1;
 }
 
 .gallery-card:hover ~ .about-card {
+  margin-top: 20px;
+  z-index: 0;
+}
+
+.about-card:hover ~ .gallery-card {
   margin-top: 20px;
   z-index: 0;
 }
@@ -382,6 +442,79 @@ nav .menu-item.logo img {
 }
 
 .process-graph img {
-  width: 50px;
+  width: 100px;
   margin: 0 20px;
+}
+
+.luna-form input {
+    background-color: #FFF;
+    border: none;
+    width: 100%;
+    padding: 5px 10px ;
+}
+
+.luna-form input:active, .luna-form input:focus {
+    border: none;
+    outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.luna-form input::-webkit-outer-spin-button,
+.luna-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.luna-form input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.luna-form .label {
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--grey-wind-fadeout, grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.luna-form .label::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--grey-wind-fadeout, grey);
+    margin-left: 20px;
+    opacity: .5;
+    border: 2px;
+}
+
+.luna-form .required .label::before {
+    content: '*';
+    color: red;
+    margin-right: 5px;
+}
+
+.luna-form .input-container {
+    margin-bottom: 20px;
+}
+
+.luna-form .submit {
+    width: 200px;
+    margin-left: calc(100% - 200px);
+    position: relative;
+    z-index: 1;
+    height: 40px;
+}
+
+.luna-form .submit input {
+    background-color: transparent;
+    height: 100%;
+}
+
+.contact-card iframe {
+    width: 100%;
+    height: 300px;
 }

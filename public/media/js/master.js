@@ -6,6 +6,7 @@ class Luna {
   static imgEnlargeModalId = 'enlarge-container';
   static init() {
     Luna.setupEnlarableImages();
+    Luna.setupMenuLogoRsize();
   }
 
   static setupEnlarableImages() {
@@ -40,6 +41,22 @@ class Luna {
     Luna.imgEnlargeModal.classList.add('active');
     Luna.imgEnlargeModalImg.focus();
     Luna.imgEnlargeModalImg.src = src;
+  }
+
+  static setupMenuLogoRsize() {
+    const logo = document.querySelector('#menu .menu-item.logo');
+    if (!logo) {
+      console.error("Logo not found! Logo resizing is disabled");
+      return;
+    }
+
+    window.addEventListener('scroll', function (e) {
+      if (window.scrollY === 0) {
+        logo.classList.remove('small');
+      } else {
+        logo.classList.add('small');
+      }
+    });
   }
 }
 Luna.init();

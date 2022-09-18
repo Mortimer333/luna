@@ -36,4 +36,104 @@ return [
             ]
         ],
     ],
+    "CONTACT_FORM" => [
+        [
+            "label" => "Name and Surname",
+            "type" => "text",
+            "name" => "full_name",
+            "class" => "required",
+        ],
+        [
+            "row" => [
+                [
+                    "col-6" =>  [
+                        "label" => "Phone number",
+                        "type" => "text",
+                        "name" => "phone_number",
+                        "class" => "required",
+                    ],
+                    [
+                        "col-6" =>  [
+                            "label" => "Whatsapp",
+                            "type" => "text",
+                            "name" => "whatsapp"
+                        ],
+                    ]
+                ]
+            ],
+        ],
+        [
+            "row" => [
+                [
+                    "col-6" => [
+                        "label" => "Dogs name",
+                        "type" => "text",
+                        "name" => "dogs_name"
+                    ],
+                ],
+                [
+                    "col-6" => [
+                        "label" => "Dogs age",
+                        "type" => "text",
+                        "name" => "dogs_age"
+                    ]
+                ]
+            ],
+        ],
+        [
+            "row" => [
+                [
+                    "col-6" => [
+                        "label" => "Dogs breed",
+                        "type" => "text",
+                        "name" => "dogs_breed"
+                    ],
+                ],
+                [
+                    "col-6" => [
+                        "label" => "Dogs weight",
+                        "type" => "text",
+                        "name" => "dogs_weight"
+                    ]
+                ]
+            ]
+        ],
+        [
+            "row" => [
+                [
+                    "col-6" => [
+                        "label" => "Appointment date",
+                        "type" => "date",
+                        "name" => "appointment_date"
+                    ],
+                ],
+                [
+                    "col-6" => [
+                        "row" => [
+                            [
+                                "col-6" => [
+                                    [
+                                        "label" => "Hour",
+                                        "type" => "number",
+                                        "name" => "appointment_hour",
+                                        "min" => "0",
+                                        "max" => "23"
+                                    ],
+                                ]
+                            ],
+                            "col-6" => [
+                                [
+                                    "label" => "Minute",
+                                    "type" => "number",
+                                    "name" => "appointment_minutes",
+                                    "min" => "0",
+                                    "max" => "59"
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
 ];
