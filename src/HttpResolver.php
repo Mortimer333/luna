@@ -26,7 +26,7 @@ class HttpResolver
         }
 
         if (isset($json["submit_contact"])) {
-            $this->handleContactForm($json);
+            echo $this->handleContactForm($json);
         } else {
             echo Response::new(false, 400, [
                 "error" => "Request not handled",
@@ -74,9 +74,9 @@ class HttpResolver
             $mail->AltBody = 'Form: ' . implode(', ', $fields);
 
             $mail->send();
-            echo Response::new(true, 200);
+            return Response::new(true, 200);
         } catch (Exception $e) {
-            echo Response::new(false, $e->getCode(), [
+            return Response::new(false, $e->getCode(), [
                 "error" => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"
             ]);
         }
