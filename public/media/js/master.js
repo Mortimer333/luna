@@ -3,10 +3,12 @@ class Luna {
   static enlargeActive = 'enlarge-acitve';
   static imgEnlargeModal;
   static imgEnlargeModalImg;
+  static form;
   static imgEnlargeModalId = 'enlarge-container';
   static init() {
     Luna.setupEnlarableImages();
     Luna.setupMenuLogoRsize();
+    Luna.setupContactFrom();
   }
 
   static setupEnlarableImages() {
@@ -57,6 +59,94 @@ class Luna {
         logo.classList.add('small');
       }
     });
+  }
+
+  static setupContactFrom() {
+    if (!this.form) {
+      this.form = document.getElementById('contact-form');
+      if (!this.form) {
+        throw new Error("Form not found, making appointment is disabled");
+      }
+    }
+    this.form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fields = {};
+
+      this.form.querySelectorAll('.required input').forEach(field => {
+        if (field.value.length == 0) {
+          const mess = 'Field ' + field.placeholder + ' can\'t be empty';
+          Luna.formMessage(mess, 'error');
+          throw new Error(mess);
+        }
+      });
+
+      this.form.querySelectorAll('input').forEach(field => {
+        fields[field.name] = {
+          name: field.name,
+          label: field.placeholder,
+          value: (field.value.length > 0 ? field.value : null),
+          type: field.type
+        };
+      });
+
+      Luna.addFormLoader();
+      fetch('contactform.php', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(fields)
+      }).then(response => {
+        Luna.removeLoader();
+        if (response.status === 200) {
+          return response.json();
+        }
+        console.error('Form error', response);
+        Luna.formMessage("Form couldn't be sent because of the server error", 'error');
+        throw new Error('Form error');
+      }).then(json => {
+        this.form.querySelectorAll('input').forEach(input => {
+          if (input.type !== 'submit' && input.type !== 'date') {
+            input.value = '';
+          }
+        });
+        Luna.formMessage("Form was sent succesfully", 'success');
+      })
+    }.bind(this));
+  }
+
+  static formMessage(message, type, timeout = 10000) {
+    const messContainer = this.form.querySelector('.messages');
+    if (!messContainer) {
+      throw new Error('Message container not found');
+    }
+    const div = document.createElement('div');
+    div.className = type;
+    div.innerHTML = message;
+    messContainer.innerHTML = '';
+    messContainer.appendChild(div);
+    setTimeout(function () {
+      messContainer.innerHTML = '';
+    }, timeout);
+  }
+
+  static addFormLoader() {
+    const messContainer = this.form.querySelector('.messages');
+    if (!messContainer) {
+      throw new Error('Message container not found');
+    }
+    const div = document.createElement('div');
+    div.className = 'loader';
+    messContainer.innerHTML = '';
+    messContainer.appendChild(div);
+  }
+
+  static removeLoader() {
+    const messContainer = this.form.querySelector('.messages');
+    if (!messContainer) {
+      throw new Error('Message container not found');
+    }
+    messContainer.innerHTML = '';
   }
 }
 Luna.init();

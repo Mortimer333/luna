@@ -53,8 +53,10 @@
         <div class="gallery-card luna-card luna-card-gold">
           <div class="frame"></div>
           <h2 class="title-grey">Make an appointment</h2>
-          <div class="separator"></div>
-          <form class="luna-form">
+          <form class="luna-form" id="contact-form">
+            <div class="separator">
+              <div class="messages d-flex justify-content-center align-items-center h-100"></div>
+            </div>
             <?= Tool::generateFormFields(CONTACT_FORM) ?>
             <div class="separator"></div>
             <div class="submit grey-bg">

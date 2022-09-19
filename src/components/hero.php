@@ -6,7 +6,7 @@
   <div class="floral"></div>
   <div class="hero-content">
     <h1 class="hero-header">
-      <img src="<?= Tool::getFile('/media/assets/logo.png'); ?>" alt="logo" class="hero-logo">
+      <img src="<?= Tool::getFile('/media/assets/logo.png'); ?>" alt="logo" class="hero-logo" is="lazy-img">
       <p><span class="gold-runes">Luna</span> - Hunderfriseur</p>
     </h1>
     <div class="hero-body">
