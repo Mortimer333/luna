@@ -48,16 +48,16 @@
           <a href="#about">About</a>
         </div>
         <div class="menu-item">
-          <a href="#about">Process</a>
+          <a href="#process">Process</a>
         </div>
         <div class="menu-item logo">
           <img src="<?= Tool::getFile('/media/assets/paw.png'); ?>" alt="Paw">
         </div>
         <div class="menu-item">
-          <a href="#about">Contact</a>
+          <a href="#contact">Contact</a>
         </div>
         <div class="menu-item">
-          <a href="#about">Gallery</a>
+          <a href="#gallery">Gallery</a>
         </div>
       </div>
     </nav>
@@ -65,10 +65,11 @@
       <?php require_once Tool::getComponent('hero') ?>
       <?php require_once Tool::getComponent('process') ?>
       <?php require_once Tool::getComponent('contact') ?>
+      <?php require_once Tool::getComponent('gallery') ?>
     </main>
     <footer>
       <div class="container">
-
+        © 2022
       </div>
     </footer>
 

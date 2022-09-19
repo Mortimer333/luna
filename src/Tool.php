@@ -103,4 +103,17 @@ abstract class Tool
         }
         return $template;
     }
+
+    public static function getGalleryItems(): array
+    {
+        $iter = new \DirectoryIterator(self::getRoot() . '/public/media/assets/gallery');
+        $files = [];
+        foreach ($iter as $file) {
+            if ($file->isDot()) {
+                continue;
+            }
+            $files[] = self::getFile('media/assets/gallery/' . $file->getFilename());
+        }
+        return $files;
+    }
 }

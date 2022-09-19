@@ -1,7 +1,7 @@
 <?php
   use Luna\Tool;
 ?>
-<section class="hours grey-bg full-page content">
+<section class="hours grey-bg full-page content" id="process">
   <div class="container">
     <div class="process-graph gold-runes-color">
       <img src="<?= Tool::getFile('media/assets/blob_uncut_dog.png') ?>" alt="step 1" is="lazy-img">

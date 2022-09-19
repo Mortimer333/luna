@@ -30,6 +30,10 @@ a, .gold-runes-underline, .gold-runes-strike {
   transition: color var(--animation-speed, .5);
 }
 
+a.active {
+  color: var(--golden-runes, gold) !important;
+}
+
 a::before, .gold-runes-underline::before, .gold-runes-strike::before {
   content: '';
   width: 0;
@@ -57,8 +61,16 @@ a:hover::before, .gold-runes-underline::before {
   left: 0;
 }
 
+footer {
+  padding: 10px 20px;
+  text-align: center;
+  background-color: var(--golden-runes, gold);
+  color: #FFF;
+  font-size: 20px;
+}
+
 img.enlarge-enabled {
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 .enlarge-container {
@@ -290,7 +302,7 @@ nav .menu-item.logo.small img {
 }
 
 .hero {
-  min-height: 600px;
+  height: calc(100vh - var(--menu-height, 65px));
 }
 
 .hero-content {
@@ -407,16 +419,30 @@ nav .menu-item.logo.small img {
   text-overflow: ellipsis;
   margin-right: 5px;
   vertical-align: middle;
+  padding-right: 10px;
 }
 
 .gallery-card-review {
   height: 30%;
   position: relative;
-  padding: 20px;
+  padding: 10px 20px;
+}
+
+.gallery-card-review-small .gallery-card-review {
+  height: 80px;
+}
+
+.gallery-card-review-small .gallery-card-before-after {
+  height: calc(100% - 100px);
 }
 
 .gallery-card-review-header {
   font-size: 30px;
+  height: 50px;
+}
+
+.galler-card-review-desc {
+  height: calc(100% - 50px);
 }
 
 .stars {
@@ -434,6 +460,7 @@ nav .menu-item.logo.small img {
   border-radius: 100%;
   margin: 10px auto;
   margin-bottom: 25px;
+  border: 2px solid var(--golden-runes-fadeout, gold);
 }
 
 .process-graph {
@@ -471,50 +498,80 @@ nav .menu-item.logo.small img {
 }
 
 .luna-form .label {
-    margin: 0;
-    margin-bottom: 10px;
-    color: var(--grey-wind-fadeout, grey);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: nowrap;
-    font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  color: var(--grey-wind-fadeout, grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .luna-form .label::after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background-color: var(--grey-wind-fadeout, grey);
-    margin-left: 20px;
-    opacity: .5;
-    border: 2px;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: var(--grey-wind-fadeout, grey);
+  margin-left: 20px;
+  opacity: .5;
+  border: 2px;
 }
 
 .luna-form .required .label::before {
-    content: '*';
-    color: red;
-    margin-right: 5px;
+  content: '*';
+  color: red;
+  margin-right: 5px;
 }
 
 .luna-form .input-container {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .luna-form .submit {
-    width: 200px;
-    margin-left: calc(100% - 200px);
-    position: relative;
-    z-index: 1;
-    height: 40px;
+  width: 200px;
+  margin-left: calc(100% - 200px);
+  position: relative;
+  z-index: 1;
+  height: 40px;
 }
 
 .luna-form .submit input {
-    background-color: transparent;
-    height: 100%;
+  background-color: transparent;
+  height: 100%;
 }
 
 .contact-card iframe {
-    width: 100%;
-    height: 300px;
+  width: 100%;
+  height: 300px;
+  border: 5px solid var(--golden-runes-fadeout, gold);
+}
+
+.contact-list {
+  list-style: none;
+  list-style-position: inside;
+  padding: 20px;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+}
+
+.gallery .img-box {
+  display: inline-block;
+  width: calc((100% / 3) - 20px);
+  height: 0;
+  padding-bottom: calc((100% / 3) - 20px);
+  margin: 5px;
+  vertical-align: top;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery .img-box img {
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  height: 100%;
 }

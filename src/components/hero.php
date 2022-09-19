@@ -2,7 +2,7 @@
     use Luna\Tool;
 ?>
 
-<section class="hero container full-page content">
+<section class="hero container full-page content" id="about">
   <div class="floral"></div>
   <div class="hero-content">
     <h1 class="hero-header">
@@ -15,7 +15,7 @@
         <div id="galleryCardCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <?php foreach (CARD_GALLERY as $i => $item): ?>
-              <div class="carousel-item<?php if ($i == 0): ?> active<?php endif; ?>">
+              <div class="carousel-item<?php if ($i == 0): ?> active<?php endif; ?><?php if (!isset($item['review']['desc'])): ?> gallery-card-review-small<?php endif; ?>">
                 <div class="gallery-card-before-after d-flex justify-content-between">
                   <div class="img-container d-flex align-items-center">
                     <img src="<?= Tool::getFile($item['before']) ?>" alt="before" is="lazy-img" class="enlarge-enabled">
@@ -28,15 +28,19 @@
                   <span class="frame frame-gold"></span>
                   <header class="gallery-card-review-header" title="<?= $item['review']['author'] ?>">
                     <span class="reviewer gold-runes"><?= $item['review']['author'] ?></span>
-                    <span class="stars">
+                    <?php if (isset($item['review']['stars'])): ?>
+                      <span class="stars">
                         <?php for($i = 0;$i < 5; $i++): ?>
                           <span class="star"><?php if ($i + 1 <= $item['review']['stars']): ?>★<?php else: ?>☆<?php endif; ?></span>
                         <?php endfor; ?>
-                    </span>
+                      </span>
+                    <?php endif; ?>
                   </header>
-                  <p class="galler-card-review-desc">
-                    <?= $item['review']['desc'] ?>
-                  </p>
+                  <?php if (isset($item['review']['desc'])): ?>
+                    <p class="galler-card-review-desc">
+                      <?= $item['review']['desc'] ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
               </div>
             <?php endforeach; ?>
@@ -56,7 +60,7 @@
       <div class="about-card luna-card">
         <div class="frame frame-gold"></div>
         <div class="floral"></div>
-        <img src="<?= Tool::getFile('/media/assets/profile-ph.png'); ?>" alt="profile" class="about-card-bio-img">
+        <img src="<?= Tool::getFile('/media/assets/profile.jpg'); ?>" alt="profile" class="about-card-bio-img">
         <p class="about-card-bio">
           &emsp;Hallo meine Name ist <span class="gold-runes-color">Marzena Stefaniak</span> und ich bin gelernte und zertifizierte <span class="gold-runes-color">Hundefriseur</span>. Ich bitte Pflege für kleine und grosse Hunde.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
