@@ -4,7 +4,7 @@
 <section class="contact full-page content" id="contact">
   <div class="container">
     <div class="process-graph gold-runes-color">
-      <img src="<?= Tool::getFile('media/assets/dog_call_center.png') ?>" alt="call us" is="lazy-img">
+      <img src="<?= Tool::getFile('media/assets/dog_call_center.png') ?>" alt="call us" is="lazy-img" class="keep-mobile">
     </div>
     <h1 class="center-title gold-runes-color">Contact</h1>
 

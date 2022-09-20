@@ -114,6 +114,7 @@ abstract class Tool
             }
             $files[] = self::getFile('media/assets/gallery/' . $file->getFilename());
         }
+        natsort($files);
         return $files;
     }
 }
