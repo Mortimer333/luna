@@ -38,7 +38,7 @@ a.active {
   color: var(--golden-runes, gold) !important;
 }
 
-a::before, .gold-runes-underline::before, .gold-runes-strike::before {
+a:not(.no-underline)::before, .gold-runes-underline::before, .gold-runes-strike::before {
   content: '';
   width: 0;
   left: 50%;
@@ -278,6 +278,16 @@ nav .menu-item {
   align-items: center;
   font-size: 20px;
   text-transform: uppercase;
+}
+
+nav .menu-item.logo a {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+nav .menu-item .menu-item-mobile {
+  display: none;
 }
 
 nav .menu-item.logo {
@@ -736,6 +746,14 @@ nav .menu-item.logo.small img {
 
   .row > * {
     width: 100%;
+  }
+
+  .menu-item-desktop {
+    display: none;
+  }
+
+  nav .menu-item .menu-item-mobile {
+    display: block;
   }
 }
 

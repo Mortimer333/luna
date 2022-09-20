@@ -64,7 +64,7 @@ abstract class Tool
         return $form;
     }
 
-    public static function getField(int|string $key, array $field): string
+    public static function getField($key, array $field): string
     {
         $fieldStr = '';
         if (is_string($key)) {
@@ -94,7 +94,10 @@ abstract class Tool
 
     public static function generateField(array $field): string
     {
-        $template = self::FIELDS[$field['type']] ?? throw new \Exception('Field type not found', 500);
+      if (!isset(self::FIELDS[$field['type']])) {
+        throw new \Exception('Field type not found', 500);
+      }
+        $template = self::FIELDS[$field['type']];
         if ($field['type'] == 'date') {
             $field['now'] = date('Y-m-d');
         }

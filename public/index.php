@@ -14,7 +14,7 @@
     <meta name="subtitle" content="<?= SUBTITLE ?>">
     <meta name="keywords" content="hundefriseur, warburg, hundesalon, hundesalon luna, marzena stefaniak">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= URL ?>">
     <meta property="og:title" content="<?= TITLE ?>r">
@@ -38,26 +38,34 @@
   <body>
     <nav id="menu">
       <div class="container menu">
-        <!--
-          - about
-          - contact
-          - gallery
-          - hours
-        -->
         <div class="menu-item">
-          <a href="#about">About</a>
+          <a href="#contact" class="menu-item-desktop">About</a>
+          <a href="#about" class="menu-item-mobile no-underline">
+            <img src="<?= Tool::getFile('/media/assets/about_mobile.png'); ?>" alt="About">
+          </a>
         </div>
         <div class="menu-item">
-          <a href="#process">Process</a>
+          <a href="#contact" class="menu-item-desktop">Process</a>
+          <a href="#process" class="menu-item-mobile no-underline">
+            <img src="<?= Tool::getFile('/media/assets/process_mobile.png'); ?>" alt="Process">
+          </a>
         </div>
         <div class="menu-item logo">
-          <img src="<?= Tool::getFile('/media/assets/paw.png'); ?>" alt="Paw">
+          <a href="#about" class="no-underline">
+            <img src="<?= Tool::getFile('/media/assets/paw.png'); ?>" alt="Paw">
+          </a>
         </div>
         <div class="menu-item">
-          <a href="#contact">Contact</a>
+          <a href="#contact" class="menu-item-desktop">Contact</a>
+          <a href="#contact" class="menu-item-mobile no-underline">
+            <img src="<?= Tool::getFile('/media/assets/contact_mobile.png'); ?>" alt="Contact">
+          </a>
         </div>
         <div class="menu-item">
-          <a href="#gallery">Gallery</a>
+          <a href="#contact" class="menu-item-desktop">Gallery</a>
+          <a href="#gallery" class="menu-item-mobile no-underline">
+            <img src="<?= Tool::getFile('/media/assets/gallery_mobile.png'); ?>" alt="Gallery">
+          </a>
         </div>
       </div>
     </nav>
