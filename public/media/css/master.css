@@ -189,7 +189,7 @@ img.enlarge-enabled {
 
 .content {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
 }
 
 .story-text {
@@ -317,6 +317,7 @@ nav .menu-item.logo.small img {
 
 .hero {
   min-height: calc(100vh - var(--menu-height, 65px));
+  position: relative;
 }
 
 .hero-content {
@@ -445,11 +446,11 @@ nav .menu-item.logo.small img {
 }
 
 .gallery-card-review-small .gallery-card-review {
-  height: 80px;
+  height: 70px;
 }
 
 .gallery-card-review-small .gallery-card-before-after {
-  height: calc(100% - 100px);
+  height: calc(100% - 90px);
 }
 
 .gallery-card-review-header {
@@ -784,9 +785,5 @@ nav .menu-item.logo.small img {
 
   .gallery-card-review-small .gallery-card-review, .gallery-card-review-header {
     height: unset;
-  }
-
-  .hero-body {
-    margin: 10px;
   }
 }

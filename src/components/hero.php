@@ -3,8 +3,8 @@
 ?>
 
 <section class="hero full-page content" id="about">
+  <div class="floral"></div>
   <div class="container">
-    <div class="floral"></div>
     <div class="hero-content">
       <h1 class="hero-header">
         <img src="<?= Tool::getFile('/media/assets/logo.png'); ?>" alt="logo" class="hero-logo" is="lazy-img">
@@ -75,7 +75,6 @@
           </p>
         </div>
       </div>
-      <div class="separator"></div>
     </div>
   </div>
 </section>
