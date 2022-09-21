@@ -189,7 +189,7 @@ img.enlarge-enabled {
 
 .content {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .story-text {
@@ -316,12 +316,12 @@ nav .menu-item.logo.small img {
 }
 
 .hero {
-  height: calc(100vh - var(--menu-height, 65px));
+  min-height: calc(100vh - var(--menu-height, 65px));
 }
 
 .hero-content {
   position: relative;
-  height: 90%;
+  height: 90vh;
   width: 100%;
   padding: 20px;
   --header-height: 50px;
@@ -650,10 +650,11 @@ nav .menu-item.logo.small img {
 
   .hero-content {
     padding: 0;
+    height: auto;
   }
 
   .hero {
-    height: auto;
+    min-height: auto;
   }
 
   .about-card, .gallery-card {
