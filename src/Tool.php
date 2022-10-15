@@ -35,7 +35,7 @@ abstract class Tool
      */
     public static function getFile(string $filePath): string
     {
-        $absolutePath = self::getRoot() . '/public/' . ltrim($filePath, '/');
+        $absolutePath = self::getRoot() . '/' . PUBLIC_FOLDER . '/' . ltrim($filePath, '/');
 
         $filePath = rtrim(ASSET_PREFIX, '/') . '/' . ltrim($filePath, '/');
         if (is_file($absolutePath)) {
@@ -109,7 +109,7 @@ abstract class Tool
 
     public static function getGalleryItems(): array
     {
-        $iter = new \DirectoryIterator(self::getRoot() . '/public/media/assets/gallery');
+        $iter = new \DirectoryIterator(self::getRoot() . '/' . PUBLIC_FOLDER . '/media/assets/gallery');
         $files = [];
         foreach ($iter as $file) {
             if ($file->isDot()) {

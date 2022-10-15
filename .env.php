@@ -6,6 +6,7 @@ return [
     "DESC" => 'Hallo meine Name ist Marzena Stefaniak und ich bin gelernte und zertifizierte Hundefriseur. Ich bitte Pflege für kleine und grosse Hunde.',
     "TITLE" => 'Luna - Hundefriseur',
     "SUBTITLE" => 'Luna - Hundefriseur',
+    "PUBLIC_FOLDER" => "httpdocs",
     // Review desc max 344 characters
     "CARD_GALLERY" => [
         [
