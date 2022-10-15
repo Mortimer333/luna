@@ -7,10 +7,10 @@ return [
     "TITLE" => 'Luna - Hundefriseur',
     "SUBTITLE" => 'Luna - Hundefriseur',
     "PUBLIC_FOLDER" => "httpdocs",
-    "EMAIL_SECRET" => "xsw2#EDCvfr4%TGB",
-    "EMAIL_USERNAME" => 'lunaweb@testdomain353.de',
-    "EMAIL_HOST" => 'server1121.dmsolutionsonline.de',
-    "EMAIL_PORT" => 587,
+    "EMAIL_SECRET" => "",
+    "EMAIL_USERNAME" => '',
+    "EMAIL_HOST" => '',
+    "EMAIL_PORT" => 587
     // Review desc max 344 characters
     "CARD_GALLERY" => [
         [
