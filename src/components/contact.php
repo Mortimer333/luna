@@ -12,6 +12,21 @@
     <div class="hero-content">
       <div class="hero-body revers">
 
+        <div class="gallery-card luna-card luna-card-gold">
+          <div class="frame"></div>
+          <h2 class="title-grey">Make an appointment</h2>
+          <form class="luna-form" id="contact-form">
+            <div class="separator">
+              <div class="messages d-flex justify-content-center align-items-center h-100"></div>
+            </div>
+            <?= Tool::generateFormFields(CONTACT_FORM) ?>
+            <div class="separator"></div>
+            <div class="submit grey-bg">
+                <input type="submit" name="submit_contact" value="Send" class="gold-runes-color">
+            </div>
+          </form>
+        </div>
+
         <div class="contact-card about-card luna-card">
           <div class="frame frame-gold"></div>
           <div class="floral"></div>
@@ -48,22 +63,6 @@
               </a>
             </li>
           </ul>
-        </div>
-
-        <div class="gallery-card luna-card luna-card-gold">
-          <div class="frame"></div>
-          <h2 class="title-grey">Make an appointment</h2>
-          <form class="luna-form" id="contact-form">
-            <div class="separator">
-              <div class="messages d-flex justify-content-center align-items-center h-100"></div>
-            </div>
-            <?= Tool::generateFormFields(CONTACT_FORM) ?>
-            <div class="separator"></div>
-            <div class="submit grey-bg">
-                <div class="frame frame-gold"></div>
-                <input type="submit" name="submit_contact" value="Send" class="gold-runes-color">
-            </div>
-          </form>
         </div>
 
       </div>

@@ -131,7 +131,7 @@ img.enlarge-enabled {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: -1;
+  z-index: -3;
   opacity: .025;
   background-repeat: no-repeat;
   background-position: -100px -60px;
@@ -201,21 +201,7 @@ img.enlarge-enabled {
 
 .note {
   position: relative;
-}
-
-.note::before {
-  content: '!';
-  display: block;
-  width: 40px;
-  height: 40px;
-  font-size: 24px;
-  background-color: gold;
-  border-radius: 100%;
-  text-align: center;
-  line-height: 40px;
-  position: absolute;
-  left: -20px;
-  top: -20px;
+  background-color: transparent !important;
 }
 
 .note-icon {
@@ -351,7 +337,6 @@ nav .menu-item.logo.small img {
 .hero-body {
   height: calc(100% - var(--header-height, 50px));
   display: flex;
-  flex-direction: row-reverse;
 }
 
 .about-card, .gallery-card {
@@ -360,14 +345,15 @@ nav .menu-item.logo.small img {
 }
 
 .about-card {
-  width: calc(510px + 20px);
-  margin-right: -20px;
+  width: calc(510px + 100px);
+  margin-right: -100px;
+  margin-top: 20px;
+  z-index: 0;
 }
 
 .revers .about-card {
-  margin-top: 20px;
+  margin-top: 0;
   margin-right: 0;
-  z-index: 0;
 }
 
 .about-card-bio {
@@ -378,31 +364,25 @@ nav .menu-item.logo.small img {
 .gallery-card {
   width: calc(100% - 510px);
   min-width: 400px;
-  margin-top: 20px;
-  z-index: 0;
 }
 
 .revers .gallery-card {
-  margin-top: 0;
-  margin-right: -20px;
-}
-
-*:not(.revers) .gallery-card:hover {
-  margin-top: 0;
-  z-index: 1;
-}
-
-.revers .about-card:hover {
-  margin-top: 0;
-  z-index: 1;
-}
-
-.gallery-card:hover ~ .about-card {
   margin-top: 20px;
+  margin-right: -100px;
   z-index: 0;
 }
 
-.about-card:hover ~ .gallery-card {
+*:not(.revers) .about-card:hover {
+  margin-top: 0;
+  z-index: 1;
+}
+
+.revers .gallery-card:hover {
+  margin-top: 0;
+  z-index: 1;
+}
+
+.about-card:hover ~ .gallery-card, .gallery-card:hover ~ .about-card {
   margin-top: 20px;
   z-index: 0;
 }
@@ -520,20 +500,9 @@ nav .menu-item.logo.small img {
   margin-bottom: 10px;
   color: var(--grey-wind-fadeout, grey);
   display: flex;
-  justify-content: center;
   align-items: center;
   white-space: nowrap;
   font-weight: 600;
-}
-
-.luna-form .label::after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background-color: var(--grey-wind-fadeout, grey);
-  margin-left: 20px;
-  opacity: .5;
-  border: 2px;
 }
 
 .luna-form .required .label::before {
@@ -560,9 +529,12 @@ nav .menu-item.logo.small img {
 }
 
 .contact-card iframe {
-  width: 100%;
+  width: calc(100% + 40px);
   height: 300px;
-  border: 5px solid var(--golden-runes-fadeout, gold);
+  margin-left: -20px;
+  margin-top: -20px;
+  position: relative;
+  z-index: -2;
 }
 
 .contact-list {
@@ -646,7 +618,7 @@ nav .menu-item.logo.small img {
 
 @media (max-width:1200px) {
   .hero-body {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .hero-content {
@@ -662,17 +634,14 @@ nav .menu-item.logo.small img {
     width: 100%;
   }
 
-  *:not(.revers) .gallery-card:hover,.revers .about-card:hover, .gallery-card:hover ~ .about-card,.about-card:hover ~ .gallery-card {
+  *:not(.revers) .about-card:hover, .revers .gallery-card:hover, .gallery-card:hover ~ .about-card, .about-card:hover ~ .gallery-card {
     margin-top: unset;
   }
 
-  .gallery-card, .revers .about-card {
+  .gallery-card, .revers .about-card, .revers .gallery-card, .about-card  {
     margin-top: 0;
   }
 
-  .revers .gallery-card, .about-card {
-    margin-right: 0;
-  }
 }
 
 @media (max-width:768px) {
@@ -685,16 +654,13 @@ nav .menu-item.logo.small img {
     display: none;
   }
 
-  .note-icon {
-    display: none;
+  .note {
+    flex-direction: column;
+    align-items: center;
   }
 
   .note-desc {
     width: 100%;
-  }
-
-  .note::before {
-    display: none;
   }
 
   .luna-form .submit {

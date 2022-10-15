@@ -39,13 +39,13 @@
     <nav id="menu">
       <div class="container menu">
         <div class="menu-item">
-          <a href="#contact" class="menu-item-desktop">About</a>
+          <a href="#about" class="menu-item-desktop">About</a>
           <a href="#about" class="menu-item-mobile no-underline">
             <img src="<?= Tool::getFile('/media/assets/about_mobile.png'); ?>" alt="About">
           </a>
         </div>
         <div class="menu-item">
-          <a href="#contact" class="menu-item-desktop">Process</a>
+          <a href="#process" class="menu-item-desktop">Process</a>
           <a href="#process" class="menu-item-mobile no-underline">
             <img src="<?= Tool::getFile('/media/assets/process_mobile.png'); ?>" alt="Process">
           </a>
@@ -62,7 +62,7 @@
           </a>
         </div>
         <div class="menu-item">
-          <a href="#contact" class="menu-item-desktop">Gallery</a>
+          <a href="#gallery" class="menu-item-desktop">Gallery</a>
           <a href="#gallery" class="menu-item-mobile no-underline">
             <img src="<?= Tool::getFile('/media/assets/gallery_mobile.png'); ?>" alt="Gallery">
           </a>

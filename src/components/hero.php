@@ -11,6 +11,22 @@
         <p><span class="gold-runes">Luna</span> - Hunderfriseur</p>
       </h1>
       <div class="hero-body">
+        <div class="about-card luna-card">
+          <div class="frame frame-gold"></div>
+          <div class="floral"></div>
+          <img src="<?= Tool::getFile('/media/assets/profile.jpg'); ?>" alt="profile" class="about-card-bio-img">
+          <p class="about-card-bio">
+            &emsp;Hallo meine Name ist <span class="gold-runes-color">Marzena Stefaniak</span> und ich bin gelernte und zertifizierte <span class="gold-runes-color">Hundefriseur</span>. Ich bitte Pflege für kleine und grosse Hunde.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+            &emsp;<span class="gold-runes-underline">Ut enim ad minim veniam</span>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate <i class="gold-runes-italic">velit esse cillum dolore eu fugiat</i> nulla pariatur.<br>
+            &emsp;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur <span class="gold-runes-strike">adipiscing elit, sed do</span> eiusmod tempor incididunt ut labore et dolore<br>
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
         <div class="gallery-card luna-card luna-card-gold">
           <div class="frame"></div>
           <div id="galleryCardCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -57,22 +73,6 @@
               </button>
             <?php endif; ?>
           </div>
-        </div>
-        <div class="about-card luna-card">
-          <div class="frame frame-gold"></div>
-          <div class="floral"></div>
-          <img src="<?= Tool::getFile('/media/assets/profile.jpg'); ?>" alt="profile" class="about-card-bio-img">
-          <p class="about-card-bio">
-            &emsp;Hallo meine Name ist <span class="gold-runes-color">Marzena Stefaniak</span> und ich bin gelernte und zertifizierte <span class="gold-runes-color">Hundefriseur</span>. Ich bitte Pflege für kleine und grosse Hunde.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
-            &emsp;<span class="gold-runes-underline">Ut enim ad minim veniam</span>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate <i class="gold-runes-italic">velit esse cillum dolore eu fugiat</i> nulla pariatur.<br>
-            &emsp;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur <span class="gold-runes-strike">adipiscing elit, sed do</span> eiusmod tempor incididunt ut labore et dolore<br>
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
         </div>
       </div>
     </div>
