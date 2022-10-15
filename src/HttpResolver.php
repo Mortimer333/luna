@@ -35,7 +35,7 @@ class HttpResolver
         }
     }
 
-    protected function handleContactForm(array $form): void
+    protected function handleContactForm(array $form): string
     {
         $mail = new PHPMailer(true);
         try {
@@ -48,17 +48,18 @@ class HttpResolver
 
             // Server settings
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            // $mail->isSMTP();                                            //Send using SMTP
-            // $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
-            // $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            // $mail->Username   = 'user@example.com';                     //SMTP username
-            // $mail->Password   = 'secret';                               //SMTP password
-            // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            // $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = EMAIL_HOST;                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = EMAIL_USERNAME;                     //SMTP username
+            $mail->Password   = EMAIL_SECRET;                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = EMAIL_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             // Recipients
-            $mail->setFrom('lunaweb@server.com', 'No-reply');
+            $mail->setFrom(EMAIL_USERNAME, 'No-reply');
             $mail->addAddress('stefaniakmarzena0@gmail.com', 'Marzena Stefaniak');     //Add a recipient
+            $mail->addAddress('michal.dzierzbicki@vp.pl', 'Marzena Stefaniak');     //Add a recipient
             // $mail->addReplyTo('info@example.com', 'Information');
             // $mail->addCC('cc@example.com');
             // $mail->addBCC('bcc@example.com');
@@ -76,7 +77,7 @@ class HttpResolver
             $mail->send();
             return Response::new(true, 200);
         } catch (Exception $e) {
-            return Response::new(false, $e->getCode(), [
+            return Response::new(false, 500, [
                 "error" => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"
             ]);
         }
